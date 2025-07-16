@@ -426,6 +426,9 @@ nav .container {
     padding: 5rem 0;
     background: #f8f9fa;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .pricing-section h2 {
