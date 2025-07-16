@@ -1,12 +1,15 @@
-// Smooth scrolling for navigation links
+// Smooth scrolling for navigation links with offset for fixed nav
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+            const navHeight = document.querySelector('nav').offsetHeight;
+            const targetPosition = target.offsetTop - navHeight - 20; // Extra 20px spacing
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
             });
         }
     });
