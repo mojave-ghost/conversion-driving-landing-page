@@ -79,11 +79,11 @@ E-commerce Products and product launches\
 Course Creators and digital products
 
 ## Use Cases
-**Lead generation campaigns**
-**Product/service launches**
-**Email list building**
-**Sales conversion optimization**
-**A/B testing different approaches**
+**Lead generation campaigns** <br/>
+**Product/service launches** <br/>
+**Email list building** <br/>
+**Sales conversion optimization** <br/>
+**A/B testing different approaches** <br/>
 
 ### 🔧 Customization Guide
 Quick Customizations:\
