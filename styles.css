@@ -16,6 +16,11 @@ body {
     padding: 0 20px;
 }
 
+/* Add scroll offset for fixed nav */
+section {
+    scroll-margin-top: 100px;
+}
+
 /* Navigation */
 nav {
     background: rgba(255, 255, 255, 0.95);
@@ -25,6 +30,7 @@ nav {
     top: 0;
     z-index: 1000;
     backdrop-filter: blur(10px);
+    height: 80px;
 }
 
 nav .container {
@@ -37,6 +43,12 @@ nav .container {
     font-size: 1.8rem;
     font-weight: bold;
     color: #e74c3c;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.logo:hover {
+    color: #c0392b;
 }
 
 .nav-links {
@@ -54,6 +66,35 @@ nav .container {
 
 .nav-links a:hover {
     color: #e74c3c;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 /* Hero Section */
@@ -426,9 +467,6 @@ nav .container {
     padding: 5rem 0;
     background: #f8f9fa;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .pricing-section h2 {
@@ -629,8 +667,62 @@ footer {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
     .nav-links {
-        display: none;
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 2rem;
+        gap: 2rem;
+        transition: right 0.3s ease;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        opacity: 0;
+        transform: translateX(50px);
+        animation: slideIn 0.3s ease forwards;
+    }
+
+    .nav-links.active li:nth-child(1) { animation-delay: 0.1s; }
+    .nav-links.active li:nth-child(2) { animation-delay: 0.2s; }
+    .nav-links.active li:nth-child(3) { animation-delay: 0.3s; }
+    .nav-links.active li:nth-child(4) { animation-delay: 0.4s; }
+
+    .nav-links a {
+        font-size: 1.2rem;
+        padding: 1rem 2rem;
+        display: block;
+        width: 100%;
+        text-align: center;
+        border-radius: 10px;
+        transition: all 0.3s;
+    }
+
+    .nav-links a:hover {
+        background: #f8f9fa;
+        color: #e74c3c;
+    }
+
+    @keyframes slideIn {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
     }
 
     .hero {
