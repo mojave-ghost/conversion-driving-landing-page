@@ -11,8 +11,55 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 top: targetPosition,
                 behavior: 'smooth'
             });
+            
+            // Close mobile menu after clicking link
+            closeMobileMenu();
         }
     });
+});
+
+// Logo scroll to top functionality
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Mobile menu toggle
+function toggleMobileMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    const hamburger = document.querySelector('.hamburger');
+    
+    navLinks.classList.toggle('active');
+    hamburger.classList.toggle('active');
+}
+
+// Close mobile menu
+function closeMobileMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    const hamburger = document.querySelector('.hamburger');
+    
+    navLinks.classList.remove('active');
+    hamburger.classList.remove('active');
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(event) {
+    const navLinks = document.querySelector('.nav-links');
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav');
+    
+    if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
+        closeMobileMenu();
+    }
+});
+
+// Close mobile menu on window resize (if user rotates device)
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+        closeMobileMenu();
+    }
 });
 
 // FAQ Toggle Functionality
